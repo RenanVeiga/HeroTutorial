@@ -1,0 +1,23 @@
+<!--<div *ngFor="let herois of herois">
+<h2>{{herois.name | uppercase}} Details</h2>
+<div><span>id: </span>{{herois.id}}</div>
+<div><span>name: </span>{{herois.name}}</div>
+</div>-->
+
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let herois of herois">
+    <a routerLink="/detail/{{ herois.id }}">
+      <span class="badge">{{ herois.id }}</span> {{ herois.name }}
+    </a>
+  </li>
+</ul>
+
+
+<!--<mat-grid-list cols="8" rowHeight="2:1">
+  <mat-grid-tile colspan="8" rowspan="3">1</mat-grid-tile>
+  <mat-grid-tile colspan="2" rowspan="6">2</mat-grid-tile>
+  <mat-grid-tile colspan="4" rowspan="2">3</mat-grid-tile>
+  <mat-grid-tile colspan="2" rowspan="6">4</mat-grid-tile>
+  <mat-grid-tile colspan="4" rowspan="4">5</mat-grid-tile>
+</mat-grid-list>-->

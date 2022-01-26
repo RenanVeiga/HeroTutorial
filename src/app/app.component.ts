@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Grid-test';
+  title = 'Tour of Heroes - Grid Test';
 }
