@@ -1,7 +1,7 @@
-import { Heroi } from '../models/hero';
+import { Heroi } from '../../models/hero';
 import { Component, Input, OnInit } from '@angular/core';
-import { HeroService } from '../services/hero.service';
-import { MessageService } from '../services/message.service';
+import { HeroService } from '../../services/hero.service';
+import { MessageService } from '../../services/message.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 

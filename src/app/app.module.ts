@@ -10,9 +10,9 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { DetalheHeroiComponent } from './detalhe-heroi/detalhe-heroi.component';
 import { MessageComponent } from './message/message.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DetalheHeroiComponent } from './heroes/detalhe-heroi/detalhe-heroi.component';
 
 
 @NgModule({
@@ -32,7 +32,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent]
