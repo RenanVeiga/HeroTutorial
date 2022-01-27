@@ -10,7 +10,7 @@ import { MessageService } from './message.service';
 @Injectable({ providedIn: 'root' })
 export class HeroService {
 
-  private heroisUrl = 'api/herois';
+  private heroisUrl: string = 'http://localhost:3000/heroi';
 
   constructor(private messageService: MessageService, private httpCliente: HttpClient) { }
 
@@ -23,10 +23,6 @@ export class HeroService {
   }
 
   getHeroi(id: number): Observable<Heroi> {
-    // For now, assume that a hero with the specified `id` always exists.
-    // Error handling will be added in the next step of the tutorial.
-    const hero = ListaHerois.find(h => h.id === id)!;
-    this.messageService.add(`HeroService: Heroi add id=${id}`);
-    return of(hero);
+    return this.httpCliente.get<Heroi>(`${this.heroisUrl}/${id}`);
   }
 }
