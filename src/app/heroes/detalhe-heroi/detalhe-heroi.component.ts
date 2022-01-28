@@ -4,6 +4,7 @@ import { HeroService } from '../../services/hero.service';
 import { MessageService } from '../../services/message.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-detalhe-heroi',
@@ -20,22 +21,26 @@ export class DetalheHeroiComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getHeroi();
+    this.getHeroiById();
   }
 
-  getHeroi(): void{
+  getHeroiById(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.heroService.getHeroi(id).subscribe((heroi)=> this.heroi = heroi)
+    this.heroService
+      .getHeroiById(id)
+      .subscribe((heroi) => (this.heroi = heroi));
   }
 
+  onEdit() : void {
+      if (this.heroi) {
 
-  onEdit() {
-    this.messageService.add(
-      `HeroesComponent: Herói editado Nome=${this.getHeroi()}`
-    );
-  }
+        this.heroService.modifyHero(this.heroi)
+        .subscribe(() => this.goBack());
+      }
+    }
 
-  goBack():void{
+
+  goBack(): void {
     this.location.back();
-   }
+  }
 }

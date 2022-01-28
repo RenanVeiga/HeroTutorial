@@ -12,7 +12,15 @@
     </a>
   </li>
 </ul>
+<div>
+  <label for="new-hero">Hero name: </label>
+  <input id="new-hero" #NomeHeroi />
 
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button class="add-button" (click)="add(NomeHeroi.value); NomeHeroi.value=''">
+    Add hero
+  </button>
+</div>
 
 <!--<mat-grid-list cols="8" rowHeight="2:1">
   <mat-grid-tile colspan="8" rowspan="3">1</mat-grid-tile>
