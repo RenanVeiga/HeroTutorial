@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DetalheHeroiComponent } from './heroes/detalhe-heroi/detalhe-heroi.component';
 import { AddHeroComponent } from './heroes/add-hero/add-hero.component';
 import { DeleteComponent } from './heroes/delete/delete.component';
+import { TesteComponent } from './grid/teste/teste.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { DeleteComponent } from './heroes/delete/delete.component';
     MessageComponent,
     DashboardComponent,
     AddHeroComponent,
-    DeleteComponent
+    DeleteComponent,
+    TesteComponent
   ],
   imports: [
     BrowserModule,
