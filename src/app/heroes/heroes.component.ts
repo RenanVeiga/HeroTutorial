@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Heroi } from '../models/hero'
 import { HeroService } from '../services/hero.service';
 
@@ -10,6 +11,7 @@ import { HeroService } from '../services/hero.service';
 export class HeroesComponent implements OnInit {
 
   herois: Heroi[]=[];
+  herois$?: Observable<Heroi[]>
   constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
@@ -17,14 +19,7 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroi(): void{
-    this.heroService.getHerois().subscribe((heroico)=>this.herois = heroico);
+    this.herois$ = this.heroService.getHerois()//.subscribe((heroico)=>this.herois = heroico);
    }
 
-   add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.heroService.addHeroi({ name } as Heroi).subscribe(heroi => {
-        this.herois.push(heroi);
-      });
-  }
 }

@@ -8,7 +8,6 @@ import { MessageService } from './message.service';
 
 @Injectable({ providedIn: 'root' })
 export class HeroService {
-
   private heroisUrl: string = 'http://localhost:3000/heroi';
 
   constructor(
@@ -21,11 +20,13 @@ export class HeroService {
   }
 
   addHeroi(heroi: Heroi): Observable<Heroi> {
-    return this.httpCliente.post<Heroi>(this.heroisUrl, heroi,  this.httpOptions).pipe(
-      tap((heroi: Heroi) => this.log(`heroi adicionado id=${heroi.id}`)),
-      catchError(this.handleError<Heroi>('addHeroi'))
-    );
-   }
+    return this.httpCliente
+      .post<Heroi>(this.heroisUrl, heroi, this.httpOptions)
+      .pipe(
+        tap((heroi: Heroi) => this.log(`heroi adicionado id=${heroi.id}`)),
+        catchError(this.handleError<Heroi>('addHeroi'))
+      );
+  }
   getHerois(): Observable<Heroi[]> {
     return this.httpCliente.get<Heroi[]>(this.heroisUrl).pipe(
       tap((_) => this.log('heróis buscados')),
@@ -35,19 +36,24 @@ export class HeroService {
 
   getHeroiById(id: number): Observable<Heroi> {
     return this.httpCliente.get<Heroi>(`${this.heroisUrl}/${id}`).pipe(
-      tap(_ => this.log(`Herói buscado id=${id}`)),
+      tap((_) => this.log(`Herói buscado id=${id}`)),
       catchError(this.handleError<Heroi>(`getHeroiById id=${id}`))
-    );;
+    );
   }
 
   modifyHero(heroi: Heroi): Observable<any> {
     return this.httpCliente.put(this.heroisUrl, heroi, this.httpOptions).pipe(
-      tap(_ => this.log(`Herói atualizado id=${heroi.id}`)),
+      tap((_) => this.log(`Herói atualizado id=${heroi.id}`)),
       catchError(this.handleError<any>('modifyHero'))
-    );;
+    );
   }
 
-
+  deleteHero(id: number): Observable<Heroi>{
+    return this.httpCliente.delete<Heroi>(`${this.heroisUrl}/${id}`, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted hero id=${id}`)),
+      catchError(this.handleError<Heroi>('deleteHero'))
+    );;
+  }
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };

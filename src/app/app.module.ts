@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { MessageComponent } from './message/message.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DetalheHeroiComponent } from './heroes/detalhe-heroi/detalhe-heroi.component';
+import { AddHeroComponent } from './heroes/add-hero/add-hero.component';
+import { DeleteComponent } from './heroes/delete/delete.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { DetalheHeroiComponent } from './heroes/detalhe-heroi/detalhe-heroi.comp
     HeroesComponent,
     DetalheHeroiComponent,
     MessageComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddHeroComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,

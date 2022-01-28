@@ -6,21 +6,16 @@
 
 <h2>My Heroes</h2>
 <ul class="heroes">
-  <li *ngFor="let herois of herois">
+  <li *ngFor="let herois of herois$ | async">
     <a routerLink="/detail/{{ herois.id }}">
       <span class="badge">{{ herois.id }}</span> {{ herois.name }}
     </a>
+    <app-delete [id]=herois.id></app-delete>
   </li>
-</ul>
-<div>
-  <label for="new-hero">Hero name: </label>
-  <input id="new-hero" #NomeHeroi />
 
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button class="add-button" (click)="add(NomeHeroi.value); NomeHeroi.value=''">
-    Add hero
-  </button>
-</div>
+</ul>
+
+<app-add-hero></app-add-hero>
 
 <!--<mat-grid-list cols="8" rowHeight="2:1">
   <mat-grid-tile colspan="8" rowspan="3">1</mat-grid-tile>
